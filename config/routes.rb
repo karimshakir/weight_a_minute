@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   # verb "/urls" => "namespace/controllers#action"
 
   root 'application#hello_world'
+  resources :player, :team, :weight, :enrollment
+
 end
