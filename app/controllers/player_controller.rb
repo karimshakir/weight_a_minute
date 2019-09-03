@@ -1,10 +1,27 @@
 class PlayerController < ApplicationController
   def index
     @players = Player.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render xml: @players }
-      format.json { render json: @players }
+    render 'index.html.erb'
+  end
+
+
+  def create
+    player = Player.new(
+      name: params[:name]
+    )
+    if player.save
+      render json: {message: 'Player created successfully'}, status: :created
+    else
+      render json: {errors: player.errors.full_messages}, status: :bad_request
     end
   end
+
+
+  def show
+    @player = Player.find(params[:id])
+    # render 'show.html.erb'
+  end
+
+
+
 end

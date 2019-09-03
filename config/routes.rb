@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   root 'application#hello_world'
   resources :player, :team, :weight, :enrollment
 
+  post "/sessions" => "sessions#create"
+
+
 end
