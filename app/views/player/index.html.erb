@@ -1,7 +1,9 @@
 <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player['name'] %></td>
+        <!-- <td><%= player['name'] %></td> -->
+        <td><%= player['player.id'] %></td>
+        <td><%= player['current_user.id'] %></td>
       </tr>
     <% end %>
   </tbody>
