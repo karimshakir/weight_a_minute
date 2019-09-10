@@ -2,8 +2,8 @@
     <% @players.each do |player| %>
       <tr>
         <!-- <td><%= player['name'] %></td> -->
-        <td><%= player['player.id'] %></td>
-        <td><%= player['current_user.id'] %></td>
+        <td><%= player['id'] %></td>
+        <td>current user:<%= current_user %></td>
       </tr>
     <% end %>
   </tbody>

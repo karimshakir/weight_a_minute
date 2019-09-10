@@ -1,10 +1,9 @@
-class PlayerController < ApplicationController
+class PlayersController < ApplicationController
 
   def index
     @players = Player.all
     render 'index.html.erb'
   end
-
 
   def create
     player = Player.new(
@@ -17,11 +16,9 @@ class PlayerController < ApplicationController
     end
   end
 
-
   def show
     @player = Player.find(params[:id])
     # render 'show.html.erb'
   end
-
 
 end

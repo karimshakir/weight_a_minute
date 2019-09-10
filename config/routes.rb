@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # verb "/urls" => "namespace/controllers#action"
 
   root 'application#hello_world'
-  resources :player, :team, :weight, :enrollment
+  resources :players, :teams, :weights, :enrollments
 
   post "/sessions" => "sessions#create"
 

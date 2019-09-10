@@ -1,9 +1,9 @@
-class WeightController < ApplicationController
+class WeightsController < ApplicationController
   def index
 
-  @weights = Weight.where(user_id: current_user.id).order(:created_at)
+    @weights = Weight.where(player_id: current_user.id).order(:created_at)
 
-    render 'index.json.jbuilder'
+    render 'index.html.erb'
   end
 end
 
