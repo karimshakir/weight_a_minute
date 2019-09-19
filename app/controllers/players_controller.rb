@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
 
   def index
     @players = Player.all
-    render 'index.html.erb'
+    render 'index.json.jbuilder'
   end
 
   def create

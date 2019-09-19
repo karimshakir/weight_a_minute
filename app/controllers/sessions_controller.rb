@@ -15,4 +15,13 @@ class SessionsController < ApplicationController
         render json: {}, status: :unauthorized
       end
     end
+
+    def show
+      if current_user
+        render json: { isValid: true }
+      else
+
+        render json: { isValid: false }, status: :unauthorized
+      end
+    end
 end
