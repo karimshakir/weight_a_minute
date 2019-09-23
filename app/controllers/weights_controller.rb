@@ -1,12 +1,14 @@
 class WeightsController < ApplicationController
   before_action :authenticate_user
   def index
-    @weights = Weight.where(player_id: current_user.id)
+    @weights =
+    Weight.where(player_id: current_user.id)
     render json: @weights
   end
 
   def show
-    @weights = Weight.where(player_id: current_user.id).last.pluck(:player_id,:value)
+    @weights =
+    Weight.where(player_id: current_user.id).last.pluck(:player_id,:value)
     render json: @weights
   end
 

@@ -5,6 +5,10 @@ class PlayersController < ApplicationController
     render json: @player, include: :weights
   end
 
+  def show
+    @player = Player.find(params[:id])
+  end
+
   def create
     player = Player.new(
       name: params[:name]
@@ -16,7 +20,4 @@ class PlayersController < ApplicationController
     end
   end
 
-  def show
-    @player = Player.find(params[:id])
-  end
 end
