@@ -1,5 +1,5 @@
 json.weights @weights do |weight|
-  json.weight weight
+   weight
 end
 
 

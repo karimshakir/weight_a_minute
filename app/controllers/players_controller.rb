@@ -1,8 +1,8 @@
 class PlayersController < ApplicationController
-
+  before_action :authenticate_user
   def index
-    @players = Player.all
-    render 'index.json.jbuilder'
+    @player = Player.find(current_user.id)
+    render json: @player, include: :weights
   end
 
   def create
@@ -18,7 +18,5 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find(params[:id])
-    # render 'show.html.erb'
   end
-
 end
