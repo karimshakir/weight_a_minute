@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
 
   def show
     @Teams = Team.where(player_id: current_user.id).last.pluck(:player_id,:value)
-    render 'index.json.jbuilder'
+    render json: @teams
   end
 
   def create

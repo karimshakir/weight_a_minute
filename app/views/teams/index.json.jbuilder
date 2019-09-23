@@ -1,5 +1,5 @@
-json.array! @players do |player|
-  json.id player.id
-  json.name player.name
-  json.created_at player.created_at
+json.teams! @teams do |team|
+  json.id team.id
+  json.name team.name
+  json.created_at team.created_at
 end
