@@ -18,12 +18,22 @@ before_action :authenticate_user
     enrollment = Enrollment.destroy(
       enrollment_id: params[:name]
     )
-    if team.save
-      render json: {message: 'Team created successfully'}, status: :created
-    else
-      render json: {errors: team.errors.full_messages}, status: :bad_request
-    end
+    # if happy_path
+    #   render json: {message: 'Team created deleted'}, status: :created
+    # else
+    #   render json: {errors: enrollment.errors.full_messages}, status: :bad_request
+    # end
   end
 end
 
+
+def destroy
+  @enrollment = Enrollment.find(params[:id])
+  @enrollment.destroy
+
+  render json: {message: 'Enrollment destroyed successfully'}, status: :deleted
+
+  # redirect_to articles_path, notice: "Delete success"
+
+end
 
