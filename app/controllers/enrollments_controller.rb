@@ -10,6 +10,7 @@ before_action :authenticate_user
         render json: {message: 'Enrollment created successfully'}, status: :created
     else
         render json: {errors: enrollment.errors.full_messages}, status: :bad_request
+
     end
   end
 
@@ -17,11 +18,12 @@ before_action :authenticate_user
     enrollment = Enrollment.destroy(
       enrollment_id: params[:name]
     )
-    # if team.save
-    #   render json: {message: 'Team created successfully'}, status: :created
-    # else
-    #   render json: {errors: team.errors.full_messages}, status: :bad_request
-    # end
+    if team.save
+      render json: {message: 'Team created successfully'}, status: :created
+    else
+      render json: {errors: team.errors.full_messages}, status: :bad_request
+    end
   end
 end
+
 
