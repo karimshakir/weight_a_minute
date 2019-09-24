@@ -1,12 +1,18 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user
   def index
-    @player = Player.find(current_user.id)
-    render json: @player, include: :weights
+    @players = Player.all
+    render json: @players
   end
 
   def show
-    @player = Player.find(params[:id])
+    @player =
+      if (params[:id] == 'me')
+        Player.find(current_user.id)
+      else
+        Player.find(params[:id])
+      end
+    render json: @player, include: [:weights, :teams]
   end
 
   def create
