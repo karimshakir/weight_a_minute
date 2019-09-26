@@ -2,7 +2,8 @@ class PlayersController < ApplicationController
   before_action :authenticate_user
   def index
     @players = Player.all
-    render json: @players
+    render json: @players, include: [:weights, :teams]
+
   end
 
   def show
@@ -13,6 +14,7 @@ class PlayersController < ApplicationController
         Player.find(params[:id])
       end
     render json: @player, include: [:weights, :teams]
+
   end
 
   def create

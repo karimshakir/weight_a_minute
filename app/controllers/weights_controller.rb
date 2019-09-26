@@ -3,13 +3,24 @@ class WeightsController < ApplicationController
   def index
     @weights =
     Weight.where(player_id: current_user.id)
-    render json: @weights, include: :players
+    render json: @weights, include: :player
   end
+
+  def rank
+    weightlosses = []
+      @players = Player.all.order
+    end
+  end
+
 
   def show
     @weights =
-    Weight.where(player_id: current_user.id).last.pluck(:player_id,:value)
-    render json: @weights
+      if (params[:id])
+        @weights =
+        Weight.where(player_id: current_user.id);
+        @weightloss = @weights.wtloss
+        render json: @weightloss
+      end
   end
 
   def create
@@ -23,5 +34,6 @@ class WeightsController < ApplicationController
       render json: {errors: weight.errors.full_messages}, status: :bad_request
     end
   end
+
 end
 

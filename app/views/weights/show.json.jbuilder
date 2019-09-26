@@ -1,1 +1,1 @@
-json.weight @weight
+@weightloss

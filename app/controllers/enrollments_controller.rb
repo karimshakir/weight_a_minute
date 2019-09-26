@@ -1,5 +1,20 @@
 class EnrollmentsController < ApplicationController
 before_action :authenticate_user
+  def index
+    @enrollments = Enrollment.all
+    render json: @enrollments
+  end
+
+  def show
+    @enrollment =
+      if (params[:id])
+        Enrollment.find_by(
+                            player_id: current_user.id,
+                            team_id: params[:id]
+                          )
+      end
+    render json: @enrollment
+  end
 
   def create
     enrollment = Enrollment.new(
@@ -15,25 +30,17 @@ before_action :authenticate_user
   end
 
   def destroy
-    enrollment = Enrollment.destroy(
-      enrollment_id: params[:name]
-    )
-    # if happy_path
-    #   render json: {message: 'Team created deleted'}, status: :created
-    # else
-    #   render json: {errors: enrollment.errors.full_messages}, status: :bad_request
-    # end
+    @enrollment =
+      if (params[:id])
+        Enrollment.find_by(
+                            player_id: current_user.id,
+                            team_id: params[:id]
+                          )
+      end
+      @enrollment.destroy
+    render json: {message: 'Enrollment destroyed'}
   end
-end
 
 
-def destroy
-  @enrollment = Enrollment.find(params[:id])
-  @enrollment.destroy
-
-  render json: {message: 'Enrollment destroyed successfully'}, status: :deleted
-
-  # redirect_to articles_path, notice: "Delete success"
 
 end
-
