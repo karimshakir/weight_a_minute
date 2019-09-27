@@ -6,10 +6,10 @@ class WeightsController < ApplicationController
     render json: @weights, include: :player
   end
 
-  def rank
-      @weights = Weight.all
-      render json: @weights
-  end
+  # def rank
+  #   @weights = Weight.all
+  #   render json: @weights
+  # end
 
   def create
     weight = Weight.new(
@@ -17,10 +17,9 @@ class WeightsController < ApplicationController
       value: params[:value]
     )
     if weight.save
-      render json: {message: 'Weight created successfully'}, status: :created
+      render json: { message: 'Weight created successfully' }, status: :created
     else
-      render json: {errors: weight.errors.full_messages}, status: :bad_request
+      render json: { errors: weight.errors.full_messages }, status: :bad_request
     end
   end
 end
-

@@ -1,10 +1,10 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user
 
+      # .includes(:weights, :teams)
   def index
     @players = Player
       .all
-      .includes(:weights, :teams)
       .sort_by { |player| player.wt_loss }
 
     render json: @players
@@ -17,8 +17,9 @@ class PlayersController < ApplicationController
       else
         Player.find(params[:id])
       end
-    render json: @player, include: [:weights, :teams]
-
+      @total_loss = @player.wt_loss
+    # render json: @player, include: [:weights, :teams]
+    render 'show.json.jbuilder'
   end
 
   def create
@@ -26,10 +27,9 @@ class PlayersController < ApplicationController
       name: params[:name]
     )
     if player.save
-      render json: {message: 'Player created successfully'}, status: :created
+      render json: { message: 'Player created successfully' }, status: :created
     else
-      render json: {errors: player.errors.full_messages}, status: :bad_request
+      render json: { errors: player.errors.full_messages }, status: :bad_request
     end
   end
-
 end

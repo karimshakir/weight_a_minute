@@ -1,5 +1,4 @@
 
-  json.rank @rank
 
 
 
