@@ -7,20 +7,8 @@ class WeightsController < ApplicationController
   end
 
   def rank
-    weightlosses = []
-      @players = Player.all.order
-    end
-  end
-
-
-  def show
-    @weights =
-      if (params[:id])
-        @weights =
-        Weight.where(player_id: current_user.id);
-        @weightloss = @weights.wtloss
-        render json: @weightloss
-      end
+      @weights = Weight.all
+      render json: @weights
   end
 
   def create
@@ -34,6 +22,5 @@ class WeightsController < ApplicationController
       render json: {errors: weight.errors.full_messages}, status: :bad_request
     end
   end
-
 end
 

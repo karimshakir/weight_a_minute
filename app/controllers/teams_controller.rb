@@ -1,8 +1,8 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user
   def index
-    @teams = Team.all
-    render json: @teams, include: :players
+    @teams = Team.all.includes(:players)
+    render json: @teams #, include: [:enrollments, :players]
   end
 
   def show
@@ -16,9 +16,10 @@ class TeamsController < ApplicationController
       name: params[:name]
     )
     if team.save
-      render json: {message: 'Team created successfully'}, status: :created
+      team.add_creator_to_team(current_user.id)
+      render json: { message: 'Team created successfully' }, status: :created
     else
-      render json: {errors: team.errors.full_messages}, status: :bad_request
+      render json: { errors: team.errors.full_messages }, status: :bad_request
     end
   end
 end

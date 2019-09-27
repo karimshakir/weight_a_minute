@@ -30,6 +30,7 @@ before_action :authenticate_user
   end
 
   def destroy
+    # Client only has Team Id so I'm using that to find the Enrollment
     @enrollment =
       if (params[:id])
         Enrollment.find_by(
