@@ -1,10 +1,10 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user
 
-      # .includes(:weights, :teams)
+      #
   def index
     @players = Player
-      .all
+      .all.includes(:weights, :teams)
       .sort_by { |player| player.wt_loss }
 
     render json: @players

@@ -1,15 +1,11 @@
 class WeightsController < ApplicationController
   before_action :authenticate_user
+
   def index
     @weights =
-    Weight.where(player_id: current_user.id)
-    render json: @weights, include: :player
+      Weight.where(player_id: current_user.id)
+      render json: @weights, include: :player
   end
-
-  # def rank
-  #   @weights = Weight.all
-  #   render json: @weights
-  # end
 
   def create
     weight = Weight.new(

@@ -9,8 +9,8 @@ class TeamsController < ApplicationController
       end
       team.players.map do |player|
         unless player.id == current_user.id
-          @availableTeams << team
-        end
+        @availableTeams << team
+      end
     end
   end
         render json: @availableTeams, include: :players
