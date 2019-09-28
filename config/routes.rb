@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 # custom routes
   post "/sessions" => "sessions#create"
   get "/sessions" => "sessions#show"
-  get "/enrollments/:id" => "enrollments#show"
 
-  get "/rank" => 'weights#rank'
+  get "/rank/:teamId" => 'players#rank'
+  get "/availableTeams" =>'teams#indexAvailable'
 
 
 # RESTful routes

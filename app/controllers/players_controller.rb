@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
       .all.includes(:weights, :teams)
       .sort_by { |player| player.wt_loss }
 
-    render json: @players
+    render json: @players, include: [:weights, :teams]
   end
 
   def show
@@ -31,5 +31,14 @@ class PlayersController < ApplicationController
     else
       render json: { errors: player.errors.full_messages }, status: :bad_request
     end
+  end
+
+  def rank
+    if params[:teamId]
+      @players = @players.where(team_id: teamId)
+      @players = @players
+        .sort_by { |player| player.wt_loss }
+  end
+    render json: @players, include: [:weights, :teams]
   end
 end

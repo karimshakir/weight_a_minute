@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user
-  def index
+  def indexAvailable
     @availableTeams = []
     @teams = Team.all#.includes(:players)
     @teams.map do |team|
