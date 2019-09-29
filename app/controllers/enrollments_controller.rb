@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
 before_action :authenticate_user
+
   def index
     @enrollments = Enrollment.all
     render json: @enrollments
@@ -38,10 +39,7 @@ before_action :authenticate_user
                             team_id: params[:id]
                           )
       end
-      @enrollment.destroy
-    render json: {message: 'Enrollment destroyed'}
+    @enrollment.destroy
+    render json: { message: 'Enrollment destroyed' }
   end
-
-
-
 end

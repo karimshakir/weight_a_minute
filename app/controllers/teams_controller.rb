@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user
+
   def index
     @teams = Team.all
     render json: @teams, include: :players
@@ -39,5 +40,4 @@ def indexAvailable
         render json: @availableTeams, include: :players
         # render json: @teams, include: :players
   end
-
 end

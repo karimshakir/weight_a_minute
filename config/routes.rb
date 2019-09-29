@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "/sessions" => "sessions#create"
   get "/sessions" => "sessions#show"
 
-  get "/rank/:teamId" => 'players#rank'
+  get '/rank/:teamId' => 'players#player_ranking'
   get "/availableTeams" =>'teams#indexAvailable'
 
 

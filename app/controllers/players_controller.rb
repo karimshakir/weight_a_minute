@@ -1,12 +1,8 @@
 class PlayersController < ApplicationController
   before_action :authenticate_user
 
-      #
   def index
-    @players = Player
-      .all.includes(:weights, :teams)
-      .sort_by { |player| player.wt_loss }
-
+    @players = Player.all
     render json: @players, include: [:weights, :teams]
   end
 
@@ -18,7 +14,6 @@ class PlayersController < ApplicationController
         Player.find(params[:id])
       end
       @total_loss = @player.wt_loss
-    # render json: @player, include: [:weights, :teams]
     render 'show.json.jbuilder'
   end
 
@@ -33,12 +28,10 @@ class PlayersController < ApplicationController
     end
   end
 
-  def rank
-    if params[:teamId]
-      @players = @players.where(team_id: teamId)
-      @players = @players
-        .sort_by { |player| player.wt_loss }
-  end
-    render json: @players, include: [:weights, :teams]
+  def player_ranking
+    @team =
+      Team.where(id: params[:teamId])
+        @output = @team[0].players
+        render json: @output
   end
 end
