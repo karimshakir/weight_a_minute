@@ -32,6 +32,6 @@ class PlayersController < ApplicationController
     @team =
       Team.where(id: params[:teamId])
         @output = @team[0].players.sort_by { |player| -player.wt_loss }
-        render json: @output
+        render 'index.json.jbuilder'
   end
 end
