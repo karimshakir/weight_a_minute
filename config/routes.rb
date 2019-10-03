@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/rank/:teamId' => 'players#player_ranking'
   get "/availableTeams" =>'teams#indexAvailable'
 
-
 # RESTful routes
   resources :players, :teams, :weights, :enrollments
 

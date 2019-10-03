@@ -4,7 +4,7 @@ class WeightsController < ApplicationController
   def index
     @weights =
       Weight.where(player_id: current_user.id)
-      render json: @weights, include: :player
+      render 'index.json.jbuilder'
   end
 
   def create
