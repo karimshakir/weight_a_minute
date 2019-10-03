@@ -12,6 +12,12 @@ class TeamsController < ApplicationController
     render json: @myTeams
   end
 
+  def selectedTeam
+    @selectedTeam =
+    Team.where(id: params[:id])
+    render json: @selectedTeam
+  end
+
   def create
     team = Team.new(
       name: params[:name]
