@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/sessions" => "sessions#show"
 
   get '/rank/:teamId' => 'players#player_ranking'
+  get '/myrank/:teamId' => 'players#my_rank'
   get "/availableTeams" =>'teams#indexAvailable'
   get '/selectedTeam/:id' => 'teams#selectedTeam'
 

@@ -24,26 +24,25 @@ class TeamsController < ApplicationController
     )
     if team.save
       team.add_creator_to_team(current_user.id)
-      render json: { message: 'Team created successfully' }, status: :created
+      render json: team, status: :created
     else
       render json: { errors: team.errors.full_messages }, status: :bad_request
     end
   end
 
-def indexAvailable
-    @availableTeams = []
-    @teams = Team.all#.includes(:players)
-    @teams.map do |team|
-      if team.players.length == 0
-        @availableTeams << team
-      end
-      team.players.map do |player|
-        unless player.id == current_user.id
-        @availableTeams << team
+  def indexAvailable
+      @availableTeams = []
+      @teams = Team.all
+      @teams.map do |team|
+        if team.players.length == 0
+          @availableTeams << team
+        end
+        team.players.map do |player|
+          unless player.id == current_user.id
+          @availableTeams << team
+        end
       end
     end
-  end
-        render json: @availableTeams, include: :players
-        # render json: @teams, include: :players
+          render json: @availableTeams, include: :players
   end
 end
