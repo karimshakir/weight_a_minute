@@ -20,7 +20,11 @@ class Team < ApplicationRecord
       team_with_joined_status = {}
       team_with_joined_status['id'] = team.id
       team_with_joined_status['name'] = team.name
-      team_with_joined_status['joined'] = team.players.map { |p| p.id }.include?(current_user_id)
+
+      joined = team.players.map { |p| p.id }.include?(current_user_id)
+
+      team_with_joined_status['joined'] = joined
+      team_with_joined_status['rank'] = joined ? team.my_rank(current_user_id) : nil
       teams << team_with_joined_status
     end
     teams
