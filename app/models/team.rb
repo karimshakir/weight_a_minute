@@ -2,7 +2,7 @@ class Team < ApplicationRecord
   has_many :enrollments, dependent: :destroy
   has_many :players, through: :enrollments
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, :uniqueness => { :case_sensitive => false }
 
   def add_creator_to_team(creator_id)
     Enrollment.create(player_id: creator_id, team_id: id)
