@@ -2,7 +2,7 @@ class TeamsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @teams = Team.all_with_current_player(current_user.id) #Team.all.order(created_at: :desc)
+    @teams = Team.all_with_current_player(current_user.id)
     render json: @teams
   end
 
