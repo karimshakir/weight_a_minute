@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 # RESTful routes
   resources :players, :teams, :weights, :enrollments
 
+  get '*path', to: "application#react"
+
 end

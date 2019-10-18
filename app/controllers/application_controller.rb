@@ -26,4 +26,9 @@ class ApplicationController < ActionController::Base
       render json: {}, status: :unauthorized
     end
   end
+
+  def react
+    path = request.parameters['path']
+    render file: 'public/index.html'
+  end
 end
