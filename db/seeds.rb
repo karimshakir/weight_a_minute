@@ -11,6 +11,7 @@ Player.create([
   {name: 'player2'},
   {name: 'player3'},
   {name: 'player4'},
+  {name: 'KARIM SHAKIR'},
 ])
 
 Weight.create([
@@ -43,12 +44,18 @@ Weight.create([
 {value: 409, player_id: 4},
 {value: 410, player_id: 4},
 {value: 411, player_id: 4},
-{value: 412, player_id: 4}
+{value: 412, player_id: 4},
+{value: 185, player_id: 5},
+{value: 184, player_id: 5},
+{value: 188, player_id: 5},
+{value: 195, player_id: 5},
+{value: 210, player_id: 5},
+{value: 215, player_id: 5},
+{value: 220, player_id: 5},
+{value: 225, player_id: 5}
 ])
 
 Team.create([
-  {name: 'team1'},
-  {name: 'team2'},
   {name: 'team cardio'},
   {name: 'taste test'},
   {name: 'BMI boyz'},
@@ -56,7 +63,7 @@ Team.create([
   {name: 'don\'t judge'},
   {name: 'calorie killaz'},
   {name: 'salad girls'},
-  {name: 'feather weights'},
+  {name: 'feather weights'}
 ])
 
 Enrollment.create([
@@ -64,13 +71,34 @@ Enrollment.create([
   {player_id: 2, team_id: 1},
   {player_id: 3, team_id: 1},
   {player_id: 4, team_id: 1},
+  {player_id: 5, team_id: 1},
   {player_id: 1, team_id: 2},
   {player_id: 3, team_id: 2},
   {player_id: 4, team_id: 2},
+  {player_id: 5, team_id: 1},
   {player_id: 1, team_id: 3},
   {player_id: 2, team_id: 3},
   {player_id: 4, team_id: 3},
+  {player_id: 5, team_id: 3},
   {player_id: 2, team_id: 4},
   {player_id: 3, team_id: 4},
   {player_id: 4, team_id: 4},
+  {player_id: 5, team_id: 3},
+  {player_id: 1, team_id: 5},
+  {player_id: 2, team_id: 5},
+  {player_id: 3, team_id: 5},
+  {player_id: 4, team_id: 5},
+  {player_id: 5, team_id: 5},
+  {player_id: 1, team_id: 6},
+  {player_id: 3, team_id: 6},
+  {player_id: 4, team_id: 6},
+  {player_id: 5, team_id: 6},
+  {player_id: 1, team_id: 7},
+  {player_id: 2, team_id: 7},
+  {player_id: 4, team_id: 7},
+  {player_id: 5, team_id: 7},
+  {player_id: 2, team_id: 8},
+  {player_id: 3, team_id: 8},
+  {player_id: 4, team_id: 8},
+  {player_id: 5, team_id: 8}
 ])
